@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ToDoList | Minimalist Technical Task Manager</title>
+  <meta name="description" content="A minimalist and technical ToDo List app to manage your daily tasks efficiently.">
+  <meta name="keywords" content="todo, task manager, minimalist, productivity, technical, list, checklist">
+  <meta name="author" content="Your Name">
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <meta property="og:title" content="ToDoList | Minimalist Technical Task Manager" />
+  <meta property="og:description" content="A minimalist and technical ToDo List app to manage your daily tasks efficiently." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://yourdomain.com/og-image.png" />
+  <meta property="og:url" content="https://yourdomain.com/" />
+<link rel="stylesheet" href="styles.css">
+  <!-- SEO & Social -->
+  <link rel="canonical" href="https://yourdomain.com/" />
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#101214">
+  <meta name="apple-mobile-web-app-title" content="ToDoList">
+  <meta name="application-name" content="ToDoList">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="ToDoList | Minimalist Technical Task Manager" />
+  <meta name="twitter:description" content="A minimalist and technical ToDo List app to manage your daily tasks efficiently." />
+  <meta name="twitter:image" content="https://yourdomain.com/og-image.png" />
+</head>
+<body>
+  <main>
+    <header>
+      <h1>ToDoList</h1>
+    </header>
+    <form class="input-section" autocomplete="off" aria-label="Add new task">
+      <input type="text" placeholder="Add a new task" aria-label="Task name" />
+      <button class="add-btn" title="Add task" aria-label="Add task">+</button>
+    </form>
+    <section class="tasks" aria-label="Task list">
+      <ul class="task-list">
+        <li class="task-item">
+          <input type="checkbox" id="task1" />
+          <span>Example task</span>
+          <button class="delete-btn" title="Delete task" aria-label="Delete task">×</button>
+        </li>
+        <li class="task-item">
+          <input type="checkbox" id="task2" />
+          <span>Example task</span>
+          <button class="delete-btn" title="Delete task" aria-label="Delete task">×</button>
+        </li>
+        <li class="task-item">
+          <input type="checkbox" id="task3" />
+          <span>Example task</span>
+          <button class="delete-btn" title="Delete task" aria-label="Delete task">×</button>
+        </li>
+      </ul>
+      <nav class="filters" aria-label="Task filters">
+        <button class="filter-btn active" aria-pressed="true">All</button>
+        <button class="filter-btn" aria-pressed="false">Active</button>
+        <button class="filter-btn" aria-pressed="false">Completed</button>
+      </nav>
+    </section>
+    <footer>
+      <p class="completed-count">0 tasks completed</p>
+    </footer>
+  </main>
+</body>
+
+</html>
