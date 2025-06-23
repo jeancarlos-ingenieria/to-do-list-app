@@ -6,7 +6,7 @@ import { useTasks } from "./hooks/useTasks";
 import { useFilter } from "./hooks/useFilter";
 
 export function App() {
-  const { tasks, addTask, toggleTask, deleteTask, completedCount } = useTasks();
+  const { tasks, addTask, toggleTask, deleteTask, completedCount,updateTask } = useTasks();
   const { filter, setFilter, filteredTasks } = useFilter(tasks);
 
   return (
@@ -20,6 +20,7 @@ export function App() {
           tasks={filteredTasks(filter)}
           onToggle={toggleTask}
           onDelete={deleteTask}
+          onUpdate={updateTask}
         />
         <Filters activeFilter={filter} onChange={setFilter} />
       </section>

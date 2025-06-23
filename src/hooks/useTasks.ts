@@ -32,7 +32,15 @@ export function useTasks() {
     setTasks(prev => prev.filter(task => task.id !== id));
   };
 
+  const updateTask = (id: string, newText: string) => {
+  setTasks(tasks =>
+    tasks.map(task =>
+      task.id === id ? { ...task, text: newText } : task
+    )
+  );
+};
+
   const completedCount = tasks.filter(task => task.completed).length;
 
-  return { tasks, addTask, toggleTask, deleteTask, completedCount };
+  return { tasks, addTask, toggleTask, deleteTask, completedCount ,updateTask};
 }

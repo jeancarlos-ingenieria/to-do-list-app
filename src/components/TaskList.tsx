@@ -40,12 +40,13 @@ interface TaskListProps {
     tasks: Task[];                          // Array of tasks to display
     onToggle: (id: string) => void;         // Handler to toggle task completion
     onDelete: (id: string) => void;         // Handler to delete a task
+    onUpdate: (id: string, newText: string) => void; // Optional handler to update a task
 }
 
 /**
  * Renders a list of TaskItem components.
  */
-export function TaskList({ tasks, onToggle, onDelete }: TaskListProps) {
+export function TaskList({ tasks, onToggle, onDelete, onUpdate }: TaskListProps) {
     return (
         <ul className="task-list">
             {tasks.map(task => (
@@ -56,6 +57,7 @@ export function TaskList({ tasks, onToggle, onDelete }: TaskListProps) {
                     completed={task.completed}
                     onToggle={onToggle}
                     onDelete={onDelete}
+                    onUpdate={onUpdate}
                 />
             ))}
         </ul>
