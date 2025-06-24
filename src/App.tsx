@@ -6,7 +6,8 @@ import { useTasks } from "./hooks/useTasks";
 import { useFilter } from "./hooks/useFilter";
 
 export function App() {
-  const { tasks, addTask, toggleTask, deleteTask, completedCount,updateTask } = useTasks();
+  const { tasks, addTask, toggleTask, deleteTask, completedCount, updateTask } =
+    useTasks();
   const { filter, setFilter, filteredTasks } = useFilter(tasks);
 
   return (
@@ -28,4 +29,3 @@ export function App() {
     </main>
   );
 }
-

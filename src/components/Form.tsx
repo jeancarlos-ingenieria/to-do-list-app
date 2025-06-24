@@ -29,7 +29,7 @@ import React, { useState } from "react";
  * @property onAdd - Function to add a new task, receives the task text.
  */
 interface FormProps {
-    onAdd: (taskText: string) => void;
+  onAdd: (taskText: string) => void;
 }
 
 // UI text constants for accessibility and clarity
@@ -45,39 +45,40 @@ const BUTTON_TEXT = "+";
  * Handles input state and calls onAdd when a new task is submitted.
  */
 export function Form({ onAdd }: FormProps) {
-    const [value, setValue] = useState("");
+  const [value, setValue] = useState("");
 
-    // Handles form submission and resets input if valid
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        if (value.trim()) {
-            onAdd(value.trim());
-            setValue("");
-        }
-    };
+  // Handles form submission and resets input if valid
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (value.trim()) {
+      onAdd(value.trim());
+      setValue("");
+    }
+  };
 
-    return (
-        <form
-            className="input-section"
-            autoComplete="off"
-            aria-label={FORM_ARIA_LABEL}
-            onSubmit={handleSubmit}
-        >
-            <input
-                type="text"
-                placeholder={INPUT_PLACEHOLDER}
-                aria-label={INPUT_ARIA_LABEL}
-                value={value}
-                onChange={e => setValue(e.target.value)}
-            />
-            <button
-                className="add-btn"
-                title={BUTTON_TITLE}
-                aria-label={BUTTON_ARIA_LABEL}
-                type="submit"
-            >
-                {BUTTON_TEXT}
-            </button>
-        </form>
-    );
+  return (
+    <form
+      className="input-section"
+      autoComplete="off"
+      aria-label={FORM_ARIA_LABEL}
+      onSubmit={handleSubmit}
+    >
+      <input
+        autoFocus
+        type="text"
+        placeholder={INPUT_PLACEHOLDER}
+        aria-label={INPUT_ARIA_LABEL}
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
+      <button
+        className="add-btn"
+        title={BUTTON_TITLE}
+        aria-label={BUTTON_ARIA_LABEL}
+        type="submit"
+      >
+        {BUTTON_TEXT}
+      </button>
+    </form>
+  );
 }

@@ -1,15 +1,17 @@
 /* ========================= */
-/* 🌙 VARIABLES GLOBALES     */
+/* 🌙 GLOBAL VARIABLES       */
 /* ========================= */
 :root {
-  --color-bg: #0a0a0a;
-  --color-text: #fff;
-  --color-muted: #888;
-  --color-accent: #00ff88;
-  --color-delete: #e94e4e;
-  --font-main: 'Inconsolata', monospace;
-  --radius: 3px;
-  --transition: 0.15s;
+  --color-bg: #16181a;
+  --color-surface: #191b1e;
+  --color-text: #e6e6e6;
+  --color-muted: #7a7f87;
+  --color-accent: #00ff99;
+  --color-delete: #ff5252;
+  --font-main: 'Fira Mono', 'Inconsolata', 'Menlo', monospace;
+  --radius: 5px;
+  --transition: 0.13s;
+  --border: 1px solid #232826;
 }
 
 /* ========================= */
@@ -23,150 +25,221 @@
 
 html, body {
   height: 100%;
-  font: 16px/1.5 var(--font-main);
+  font: 15px/1.5 var(--font-main);
   background: var(--color-bg);
   color: var(--color-text);
 }
 
 body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  min-height: 100vh;
-  padding: 2rem;
 }
 
 /* ========================= */
 /* 📦 LAYOUT                 */
 /* ========================= */
 main {
-  width: 100%;
-  max-width: 400px;
+  width: 100vw;
+  max-width: 420px;
+  min-height: 100vh;
+  background: var(--color-bg);
+  padding: 1.2rem 0.5rem 2.5rem 0.5rem;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.2rem;
+  box-sizing: border-box;
 }
 
 /* ========================= */
 /* 🔠 HEADER                 */
 /* ========================= */
 header h1 {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: 700;
   color: var(--color-accent);
-  margin-bottom: 1rem;
-  letter-spacing: 0.5px;
+  letter-spacing: 1px;
+  text-align: center;
+  margin-bottom: 1.1rem;
 }
 
 /* ========================= */
-/* ✏️ FORMULARIO DE INPUT   */
+/* ✏️ INPUT FORM            */
 /* ========================= */
 .input-section {
   display: flex;
-  gap: 0.5rem;
+  gap: 0.4rem;
 }
 
 .input-section input[type="text"] {
   flex: 1;
-  padding: 0.5rem 0.7rem;
+  padding: 0.5rem 0.6rem;
   background: transparent;
   border: none;
-  border-bottom: 1px solid var(--color-muted);
+  border-bottom: 1.2px solid var(--color-muted);
   color: var(--color-text);
   font-size: 1rem;
+  font-family: inherit;
   transition: border-color var(--transition);
 }
 
 .input-section input:focus-visible {
   outline: none;
-  border-bottom: 1.5px solid var(--color-accent);
+  border-bottom: 1.2px solid var(--color-accent);
 }
 
 .input-section input::placeholder {
   color: var(--color-muted);
+  opacity: 0.7;
+  font-style: italic;
 }
 
 .add-btn {
   background: none;
-  border: 1.5px solid var(--color-accent);
+  border: 1.2px solid var(--color-accent);
   color: var(--color-accent);
   border-radius: var(--radius);
-  font-size: 1.3rem;
-  padding: 0 0.8rem;
+  font-size: 1.1rem;
+  padding: 0 0.7rem;
   cursor: pointer;
-  transition: background var(--transition), color var(--transition);
+  font-family: inherit;
+  transition: background var(--transition), color var(--transition), border var(--transition);
 }
 
 .add-btn:hover,
 .add-btn:focus-visible {
   background: var(--color-accent);
-  color: #000;
+  color: var(--color-bg);
+  border-color: var(--color-accent);
 }
 
 /* ========================= */
-/* ✅ LISTA DE TAREAS        */
+/* ✅ TASK LIST              */
 /* ========================= */
 .tasks {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.3rem;
 }
 
 .task-list {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
-  min-height: 220px; /* Fija la altura para evitar saltos */
+  gap: 0.05rem;
+  min-height: 220px;
+  border-top: var(--border);
+  border-bottom: var(--border);
+  background: transparent;
+  padding: 0;
 }
 
+/* ========================= */
+/* 📝 TASK ITEM              */
+/* ========================= */
 .task-item {
   display: flex;
   align-items: center;
-  gap: 0.7rem;
-  padding: 0.2rem 0;
-  border-radius: var(--radius);
+  gap: 0.5rem;
+  padding: 0.3rem 0;
+  border-bottom: 1px dotted #232826;
+  background: transparent;
+  transition: background 0.1s;
+}
+
+.task-item:last-child {
+  border-bottom: none;
 }
 
 .task-item input[type="checkbox"] {
+  width: 1.1em;
+  height: 1.1em;
   accent-color: var(--color-accent);
   cursor: pointer;
+  margin-right: 0.4em;
+  background: none;
+  border: none;
 }
 
 .task-item span {
   flex: 1;
   font-size: 1rem;
+  padding: 2px 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--color-text);
   transition: color var(--transition);
+  user-select: text;
+  word-break: break-word;
 }
 
-.task-item input:checked + span {
+.task-item span:not(.completed):hover {
+  color: var(--color-accent);
+  background: none;
+}
+
+.task-item input:checked + span,
+.task-item .completed {
   text-decoration: line-through;
   color: var(--color-muted);
   opacity: 0.7;
 }
 
 /* ========================= */
-/* ❌ BOTÓN ELIMINAR         */
+/* ✏️ TASK EDITING           */
+/* ========================= */
+.edit-task-input,
+.task-item .edit-task-input {
+  border: none;
+  border-bottom: 1.2px solid var(--color-accent);
+  border-radius: 0;
+  padding: 4px 0;
+  font-size: 1rem;
+  width: 80%;
+  background: transparent;
+  color: var(--color-text);
+  outline: none;
+  margin-right: 0.3em;
+  font-family: inherit;
+  transition: border-color 0.13s;
+}
+
+.edit-task-input:focus,
+.task-item .edit-task-input:focus {
+  border-color: var(--color-accent);
+  background: transparent;
+}
+
+/* ========================= */
+/* ❌ DELETE BUTTON          */
 /* ========================= */
 .delete-btn {
-  background: none;
-  border: none;
-  color: var(--color-muted);
+  margin-left: 0.1em;
   font-size: 1.1rem;
+  border-radius: 50%;
+  padding: 0.1em 0.3em;
+  background: none;
+  color: var(--color-muted);
+  border: none;
   cursor: pointer;
-  transition: color var(--transition);
+  transition: color 0.13s;
+  line-height: 1;
 }
 
 .delete-btn:hover {
   color: var(--color-delete);
+  background: none;
 }
 
 /* ========================= */
-/* 🧮 FILTROS                */
+/* 🧮 FILTERS                */
 /* ========================= */
 .filters {
   display: flex;
-  gap: 0.3rem;
+  gap: 0.2rem;
   justify-content: center;
 }
 
@@ -174,17 +247,19 @@ header h1 {
   background: none;
   border: none;
   color: var(--color-muted);
-  padding: 0.2rem 0.7rem;
+  padding: 0.15rem 0.5rem;
   border-radius: var(--radius);
   cursor: pointer;
   font-size: 1rem;
+  font-family: inherit;
   transition: background var(--transition), color var(--transition);
 }
 
 .filter-btn.active,
 .filter-btn:hover {
-  background: var(--color-accent);
-  color: #000;
+  background: none;
+  color: var(--color-accent);
+  text-decoration: underline;
 }
 
 footer {
@@ -195,4 +270,13 @@ footer {
 .completed-count {
   font-size: 0.85rem;
   color: var(--color-muted);
+  letter-spacing: 0.5px;
+}
+
+/* Mobile first: everything fits, but for larger screens center and add some air */
+@media (min-width: 600px) {
+  main {
+    margin-top: 2.5rem;
+    box-shadow: none;
+  }
 }
